@@ -1,0 +1,26 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header">Ürün ekle</div>
+        <div class="card-body">
+            <form [formGroup]="registerForm">
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" placeholder="Email" formControlName="email" class="form-control"/>
+                </div>
+                <small *ngIf="registerForm.get('email')?.hasError('required') " class="form-text text-muted">
+                    Email zounludur
+                </small>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" placeholder="password" formControlName="password" class="form-control"/>
+                </div>
+                <small *ngIf="registerForm.get('password')?.hasError('minlength') "  class="form-text text-muted">
+                    Ürün adı en az iki karakter olmalıdır
+                </small>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" [disabled]="!registerForm.valid" (click)="onRegister()">Kayıt Ol</button>
+        </div>
+    </div>
+</div>
