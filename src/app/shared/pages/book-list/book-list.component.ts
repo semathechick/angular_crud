@@ -19,7 +19,7 @@ import { FilterBookListForCategoryPipe } from "../../../core/pipes/FilterBookLis
 @Component({
     selector: 'app-book-list',
     standalone: true,
-    templateUrl: './bookHomePage.html',
+    templateUrl: './book-list.component.html',
     styleUrl: './book-list.component.scss',
     imports: [CommonModule, FormsModule, RouterLink, RouterModule,FilterlistPipe,FilterBookListForCategoryPipe]
 })

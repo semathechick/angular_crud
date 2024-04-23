@@ -17,7 +17,7 @@ import { Response } from '../../../models/response';
 @Component({
   selector: 'app-book-update',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, CategoryListComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, CategoryListComponent,],
   templateUrl: './book-update.component.html',
   styleUrl: './book-update.component.css'
 })
@@ -46,9 +46,17 @@ export class BookUpdateComponent implements OnInit {
 
     this.getBookById();
     
-   
+   this.editBookAddForm();
     
   }
+  editBookAddForm(){
+    this.bookUpdateForm= this.formBuilder.group({
+      id:[this.bookId],
+      name:["",[Validators.required, Validators.minLength(2)]],
+      isbn:["",Validators.required],
+    })}
+
+  
   getBoook(){
     this.bookId = this.activeToute.snapshot.paramMap.get('id');
     this.bookService.getById(this.bookId).subscribe((response:Response<Book>)=>{
@@ -57,6 +65,8 @@ export class BookUpdateComponent implements OnInit {
       console.log(this.getBook)
     })
   }
+
+
   getBookById(){
     this.bookId = this.activeToute.snapshot.paramMap.get('id');
     
@@ -75,11 +85,6 @@ export class BookUpdateComponent implements OnInit {
       }
     });
   }
-
-
-
-
-
   getAllCategories() {
     this.categoryService.getAll().subscribe(
       (response: ResponseModel<Category>) => {
@@ -110,9 +115,9 @@ export class BookUpdateComponent implements OnInit {
     if (this.bookUpdateForm.valid) {
       const formData: Book = this.bookUpdateForm.value;
       console.log(formData.name);
-      this.bookService.add(formData).subscribe((response) => {
+      this.bookService.editBook(formData).subscribe((response) => {
         console.log("response", response);
-        alert(formData.name.toUpperCase() + " başarıyla eklendi");
+        alert(formData.name.toUpperCase() + " başarıyla güncellendi");
       }
       );
     }

@@ -34,4 +34,12 @@ export class BookService {
     });
     return this.httpClient.post<any>(this.apiUrl,book,{headers:headers})
   }
+
+  editBook(book:Book):Observable<any>{
+    const token = localStorage.getItem('Token'); 
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.httpClient.put<any>(this.apiUrl,book,{headers:headers})
+  }
 }
