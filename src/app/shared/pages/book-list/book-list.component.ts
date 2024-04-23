@@ -9,14 +9,19 @@ import { CategoryService } from "../../services/category.service";
 import { Category } from "../../../models/Category";
 import { PublisherService } from "../../services/publisher.service";
 import { Publisher } from "../../../models/publisher";
+import { RouterLink, RouterModule } from "@angular/router";
+import { FilterlistPipe } from "../../../core/pipes/filterlist.pipe";
+import { FilterBookListForCategoryPipe } from "../../../core/pipes/FilterBookListForCategory.pipe";
+
+
 
 
 @Component({
-  selector: 'app-book-list',
-  standalone: true,
-  imports: [CommonModule,FormsModule],
-  templateUrl: './book-list.component.html',
-  styleUrl: './book-list.component.scss'
+    selector: 'app-book-list',
+    standalone: true,
+    templateUrl: './bookHomePage.html',
+    styleUrl: './book-list.component.scss',
+    imports: [CommonModule, FormsModule, RouterLink, RouterModule,FilterlistPipe,FilterBookListForCategoryPipe]
 })
 export class BookListComponent implements OnInit{
   bookList:GetAllBook[] = [];
@@ -37,7 +42,7 @@ export class BookListComponent implements OnInit{
       next:(response:ResponseModel<GetAllBook>)=>{
         console.log('backendden cevap geldi:',response);
         this.bookList = response.items;
-        
+        console.log("BookList:",this.bookList)
         this.bookList.forEach(book=>{
           console.log(book.name);
           let categoryId=book.categoryId
@@ -45,6 +50,7 @@ export class BookListComponent implements OnInit{
           const category=this.categoryList.find(category=>category.id===categoryId);
           const publisher=this.publisherList.find(publisher=>publisher.id===publisherId);
           if(category && publisher){
+            
             book.categoryName=category.categoryName;
             book.publisherName=publisher.name;
           }

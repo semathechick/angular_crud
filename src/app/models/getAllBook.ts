@@ -3,9 +3,9 @@ export interface GetAllBook {
     name:string;
     isbn:string;
     page:number;
-    categoryName:string;
+    categoryName:any;
     categoryId:number,
-    publisherName:string;
+    publisherName:any;
     publisherId:number,
     language:string;
     description:string;
