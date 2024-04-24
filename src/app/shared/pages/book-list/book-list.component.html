@@ -55,7 +55,7 @@
           
         </th>
         <th>
-          <a routerLink="/book/{{item.id}}/book-update" class="btn btn-danger mx-2">Sil</a>
+          <button type="button" (click)="deleteBook($event,item.id)" class="btn btn-danger">Sil</button>
           
         </th>
       </tr>

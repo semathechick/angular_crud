@@ -12,6 +12,7 @@ import { Publisher } from "../../../models/publisher";
 import { RouterLink, RouterModule } from "@angular/router";
 import { FilterlistPipe } from "../../../core/pipes/filterlist.pipe";
 import { FilterBookListForCategoryPipe } from "../../../core/pipes/FilterBookListForCategory.pipe";
+import { Book } from "../../../models/book";
 
 
 
@@ -92,6 +93,15 @@ export class BookListComponent implements OnInit{
         console.log('backend isteği sonlandı.');
       }
     });
+  }
+  deleteBook(event:any,bookId:number){
+    if(confirm('Bu kitabı silmek istiyor musunuz ?')){
+      event.target.innerText="Siliniyor...";
+      this.bookService.deleteBook(bookId).subscribe((res:any)=>{
+        this.getBooks();
+        console.log(res+" silinidi");
+      });
+    }
   }
 
 }

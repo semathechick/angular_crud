@@ -42,4 +42,7 @@ export class BookService {
     });
     return this.httpClient.put<any>(this.apiUrl,book,{headers:headers})
   }
+  deleteBook(bookId:number){
+    return this.httpClient.delete('http://localhost:60805/api/Books/'+bookId);
+  }
 }
