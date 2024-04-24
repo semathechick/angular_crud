@@ -10,9 +10,9 @@ export class RegisterService {
 
   constructor(private httpClient : HttpClient) { }
   
-  apiUrl: string = "http://localhost:60805/api/Auth/Register";
+  apiUrl: string = "http://localhost:60805/api/Members";
 
   Register(registerModel:Register):Observable<Register>{
-    return this.httpClient.post<any>(this.apiUrl,registerModel);
+    return this.httpClient.post<Register>(this.apiUrl,registerModel);
   }
 }

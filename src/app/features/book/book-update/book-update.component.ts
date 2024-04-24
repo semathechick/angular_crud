@@ -46,7 +46,7 @@ export class BookUpdateComponent implements OnInit {
 
     this.getBookById();
     
-   this.editBookAddForm();
+    this.editBookAddForm();
     
   }
   editBookAddForm(){
