@@ -1,0 +1,41 @@
+<div class="container mt-5">
+
+
+    <div class="mb-3">
+      
+      <label for="filterText" class="form-label">Ürün ara</label>
+      <div class="row">
+        <div class="col-md-3">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Arama Kriteri
+        </button>
+        <ul class="dropdown-menu" >
+          <li><a class="dropdown-item" routerLink="/books" >Genel Arama</a></li>
+          <li><a class="dropdown-item" routerLink="/book-list-for-isbn" >Isbn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <input class="form-control" placeholder="Search" [(ngModel)]="searchKey" />
+    </div>
+  </div>
+  </div>
+  <div class="row">
+  
+    <h1 style="text-align:left;">Ürün listesi</h1>
+  <div *ngFor="let item of bookList | FilterBookListForIsbn : searchKey" class="card" style="width: 18rem;">
+  
+    <div class="card-body">
+      <h1 class="card-title">Kitap: {{item.name.toUpperCase() }} </h1>
+      <p class="card-text">ISBN:{{item.isbn}}</p>
+      <p class="card-text">Açıklama:{{item.description}}</p>
+      <p class="card-text">Stok:{{item.unitsInStock}}</p>
+  
+  
+      <a   class="btn btn-primary">Satın Al</a>
+    </div>
+  </div>
+  </div>
+      <p *ngIf="bookList.length <= 0">Yükleniyor...</p>
+    </div>

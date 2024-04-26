@@ -1,16 +1,37 @@
+<div class="row justify-content-center align-items-center text-black" style="height: 80vh; background-image: linear-gradient(to right, rgba(198, 209, 219, 0.5), rgba(228, 234, 248, 0.9));">
+  <div class="col-md-8">
+    <div class="display-1 text-center">Tobeto<br>Kütüphanesi</div>
+    <form class="d-flex mt-3 justify-content-center" id="searchForm" (ngSubmit)="onSearch()">
+      <select class="form-select form-select-lg mb-3" aria-label="Search criteria" [(ngModel)]="searchCriteria"  name="searchCriteria">
+        <option value="KatalogTarama">Katalog Tarama</option>
+        <option value="ISBN">ISBN</option>
+        <option value="Yazar">Yazar</option>
+        <option value="Başlık">Başlık</option>
+      </select>
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Ara"
+        aria-label="Search"
+        [(ngModel)]="searchKey"
+        style="max-width: 900px; max-height:40px; width: 100%;"
+        name="searchKey"
+      />
+      <div>
+        <button class="btn btn-primary" type="submit">Ara</button>
+      </div> 
+    </form>
+  </div>
+</div>
 
-<p class="tobetoKütüphane">Tobeto<br><br>Kütüphanesi</p>
-<br><br>
-<form class="d-flex" role="search">
-    <input
-      class="form-control me-2"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-      style="width:15%;"
-    />
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
+
+          
+
+
+
+
+
+
 
 
 

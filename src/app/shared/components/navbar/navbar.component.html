@@ -1,40 +1,14 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <!-- SPA'larda iç linklerde href kullanımı YASAK! -->
-            <a class="nav-link" aria-current="page" routerLink="/homepage"
-              >Ana Sayfa</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/books">Kitaplar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/register">Kayıt Ol</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/addBooks">Kitap Ekle</a>
-          </li>
-          <li class="nav-item login">
-            <a class="nav-link" routerLink="/login">Login</a>
-          </li>
-          
-        </ul>
-        
-      </div>
+<nav class="navbar shadow p-2 mb-1 bg-body rounded navbar-expand-lg navbar-light bg-light justify-content-between position-sticky top-0">
+  <a class="navbar-brand" routerLink="/homepage">TOBETO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" routerLink="/homepage">Anasayfa</a>
+      <a class="nav-item nav-link" routerLink="/register">Kayıt Ol</a>
+      <a class="nav-item nav-link" routerLink="/login">Giriş Yap</a>
+      <a class="nav-item nav-link" routerLink="/category">Katalog</a>
     </div>
-  </nav>
+  </div>
+</nav>

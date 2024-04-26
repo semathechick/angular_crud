@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { BaseInputErrorsComponent } from '../base-input-errors/base-input-errors.component';
+import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'myinput',
