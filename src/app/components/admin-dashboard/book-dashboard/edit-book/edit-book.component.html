@@ -1,0 +1,61 @@
+<div class="content">
+    <div class="card" >
+        <div class="card-header"><h5 class="title font-weight-bold">Kitap Düzenle</h5></div>
+    
+        <div class="card-body">
+    
+          <form [formGroup]="bookEditForm">
+            <table class="table">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col">Kitap Adı</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Sayfa </th>
+                    <th scope="col">Dil</th>
+                    <th scope="col">Stok Adedi</th>
+                    <th scope="col">Açıklama</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">YayınEvi</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of bookList ">  <!-- | filterBookListForCategory : searchKey -->
+                    <th scope="row">{{item.name}}</th>
+                    <th scope="row">{{item.isbn}}</th>
+                    <th scope="row">{{item.page}}</th>
+                    <th scope="row">{{item.language}}</th>
+                    <th scope="row">{{item.unitsInStock}}</th>
+                    <th scope="row">{{item.description}}</th>
+                    <th scope="row" >{{item.categoryName}}</th>
+                    <th scope="row">{{item.publisherName}}</th>
+                   
+                    
+                      <a routerLink="update/{{item.id}}" class="btn btn-outline-dark ">Güncelle</a>
+                      
+                    
+                    
+                      <button type="button" (click)="deleteBook($event,item.id)" class="btn btn-outline-danger ">Sil</button>
+                      
+                    
+                  </tr>
+                </tbody>
+             
+                <p *ngIf="categoryList.length <= 0">Yükleniyor...</p>
+               
+           </table>
+          </form> 
+           <div class="card-footer" >
+            
+        </div>
+        </div>
+    
+       
+    
+      </div>
+    </div>
+    
+    
+    
+    

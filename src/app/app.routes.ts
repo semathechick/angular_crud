@@ -10,6 +10,16 @@ import { PublisherListComponent } from './components/publisher/publisher-list/pu
 import { BookUpdateComponent } from './features/book/book-update/book-update.component';
 import { CategoryComponent } from './shared/components/category/category/category.component';
 import { BookListForIsbnComponent } from './shared/pages/book-list-for-isbn/book-list-for-isbn.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { authGuard } from './core/guards/auth.guard';
+import { EditBookComponent } from './components/admin-dashboard/book-dashboard/edit-book/edit-book.component';
+import { UpdateBookComponent } from './components/admin-dashboard/book-dashboard/update-book/update-book.component';
+import { AddCategoryComponent } from './components/category-dashboard/add-category/add-category.component';
+import { EditCategoryComponent } from './components/category-dashboard/edit-category/edit-category.component';
+import { UpdateCategoryComponent } from './components/category-dashboard/update-category/update-category.component';
+import { UpdatePublisherComponent } from './components/admin-dashboard/publisher-dashboard/update-publisher/update-publisher.component';
+import { EditPublisherComponent } from './components/admin-dashboard/publisher-dashboard/edit-publisher/edit-publisher.component';
+import { AddPublisherComponent } from './components/admin-dashboard/publisher-dashboard/add-publisher/add-publisher.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -22,7 +32,57 @@ export const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'book/:id/book-update',component:BookUpdateComponent},
-  {path:'book-list-for-isbn',component:BookListForIsbnComponent}
-  
+  {path:'book-list-for-isbn',component:BookListForIsbnComponent},
+  {path:"user",component:UserAccountComponent,
+  children:[
+    {
+        path:'useredit', component:UserEditComponent
+    }
+  ]
+},
+    {
+    path:'admin',
+    component: AdminDashboardComponent,
+    canActivate:[authGuard],
+    children:[
+        {
+            path:'bookadd',
+           component:AddBookComponent,
+        },
+        {
+         path:'bookedit',
+         component:EditBookComponent,
+        },
+        {
+         path:'bookedit/update/:bookId',
+         component:UpdateBookComponent,
+        },
+        {
+         path:'categoryadd',
+         component:AddCategoryComponent,
+        },
+        {
+         path:'categoryedit',
+         component:EditCategoryComponent,
+        },
+        {
+         path:'categoryedit/update/:categoryId',
+         component:UpdateCategoryComponent,
+        },
+        {
+         path:'publisheradd',
+         component:AddPublisherComponent,
+        },
+        {
+         path:'publisheredit',
+         component:EditPublisherComponent,
+        },
+        {
+         path:'publisheredit/update/:publisherId',
+         component:UpdatePublisherComponent,
+        }
+        
+   ]
+ }
   
 ];

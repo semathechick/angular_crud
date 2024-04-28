@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { GetAllBook } from '../../../models/getAllBook';
 import { Category } from '../../../models/Category';
 import { Publisher } from '../../../models/publisher';
-import { BookService } from '../../services/book.service';
-import { CategoryService } from '../../services/category.service';
-import { PublisherService } from '../../services/publisher.service';
+
 import { ResponseModel } from '../../../models/responseModel';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FilterBookListForIsbnPipe } from '../../../core/pipes/FilterBookListForIsbn.pipe';
 import { Author } from '../../../models/Author';
-import { AuthorService } from '../../services/Author.service';
+import { BookService } from '../../../core/services/book.service.service';
+import { CategoryService } from '../../../core/services/category.service.service';
+import { PublisherService } from '../../../core/services/publisher.service.service';
+import { AuthorService } from '../../../core/services/author.service.service';
+
 
 
 @Component({
@@ -28,6 +30,7 @@ export class BookListForIsbnComponent implements OnInit {
   authorList : Author[]=[];
   today: Date = new Date();
   searchKey : string = ' ';
+  selectedCriteria: string = '';
   constructor(private bookService : BookService,
     private categoryService:CategoryService,
     private publisherService:PublisherService,
@@ -71,7 +74,7 @@ export class BookListForIsbnComponent implements OnInit {
   }
 
   getCategories(){
-    this.categoryService.getAll().subscribe({
+    this.categoryService.getAllCategory().subscribe({
       next:(response:ResponseModel<Category>)=>{
         console.log('backendden cevap geldi:',response);
         this.categoryList = response.items;
@@ -100,7 +103,7 @@ export class BookListForIsbnComponent implements OnInit {
   }
 
   getAuthors(){
-    this.authorService.getAll().subscribe({
+    this.authorService.getAllAuthors().subscribe({
       next:(response:ResponseModel<Author>)=>{
         console.log('backendden cevap geldi:',response);
         this.authorList = response.items;
@@ -116,6 +119,16 @@ export class BookListForIsbnComponent implements OnInit {
 
   getBooksByCategory(){
     this.bookService
+  }
+ 
+
+  search() {
+    if (this.selectedCriteria === 'Isbn') {
+      this.bookList = this.bookList.filter((item: any) => item.isbn.includes(this.searchKey));
+    }
+    else{
+      this.getBooks();
+    }
   }
   
 }

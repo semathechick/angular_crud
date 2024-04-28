@@ -4,8 +4,8 @@ import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http"; 
 import { Observable } from "rxjs";
-import { BookService } from "../../services/book.service";
 import { ResponseModel } from "../../../models/responseModel";
+import { BookService } from "../../../core/services/book.service.service";
 
 @Component({
   selector: 'app-homepage',
