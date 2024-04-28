@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Response } from '../../../models/response';
-import { ResponseModel } from '../../../models/responseModel';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../../models/Category';
 import { CategoryService } from '../../../core/services/category.service.service';
@@ -66,11 +65,6 @@ export class UpdateCategoryComponent {
     });
   }
     
-  
-
-
-
-
   updateToDb(): void {
     if (this.categoryUpdateForm.valid) {
       const formData: Category = this.categoryUpdateForm.value;

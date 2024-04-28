@@ -1,13 +1,10 @@
 import { Routes } from '@angular/router';
 import { HomepageComponent } from './shared/pages/homepage/homepage.component';
 import { BookListComponent } from './shared/pages/book-list/book-list.component';
-
-import { AddBookComponent } from './features/book/add-book/add-book.component';
 import { LoginComponent } from './features/login/login/login.component';
 import { RegisterComponent } from './features/register/register.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { PublisherListComponent } from './components/publisher/publisher-list/publisher-list.component';
-import { BookUpdateComponent } from './features/book/book-update/book-update.component';
 import { CategoryComponent } from './shared/components/category/category/category.component';
 import { BookListForIsbnComponent } from './shared/pages/book-list-for-isbn/book-list-for-isbn.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
@@ -20,6 +17,9 @@ import { UpdateCategoryComponent } from './components/category-dashboard/update-
 import { UpdatePublisherComponent } from './components/admin-dashboard/publisher-dashboard/update-publisher/update-publisher.component';
 import { EditPublisherComponent } from './components/admin-dashboard/publisher-dashboard/edit-publisher/edit-publisher.component';
 import { AddPublisherComponent } from './components/admin-dashboard/publisher-dashboard/add-publisher/add-publisher.component';
+import { UserAccountComponent } from './core/user-account/user-account.component';
+import { UserEditComponent } from './core/user-edit/user-edit.component';
+import { AddBookComponent } from './components/admin-dashboard/book-dashboard/add-book/add-book.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -31,7 +31,7 @@ export const routes: Routes = [
   {path:'getAllPublisher',component:PublisherListComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
-  {path:'book/:id/book-update',component:BookUpdateComponent},
+  {path:'book/:id/book-update',component:UpdateBookComponent},
   {path:'book-list-for-isbn',component:BookListForIsbnComponent},
   {path:"user",component:UserAccountComponent,
   children:[

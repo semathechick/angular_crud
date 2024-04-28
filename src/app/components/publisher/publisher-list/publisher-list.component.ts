@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PublisherService } from '../../../shared/services/publisher.service';
 import { Publisher } from '../../../models/publisher';
 import { ResponseModel } from '../../../models/responseModel';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { PublisherService } from '../../../core/services/publisher.service.service';
 
 @Component({
   selector: 'app-publisher-list',

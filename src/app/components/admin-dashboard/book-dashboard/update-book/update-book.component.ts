@@ -7,11 +7,11 @@ import { Book } from '../../../../models/book';
 import { Category } from '../../../../models/Category';
 import { GetAllBook } from '../../../../models/getAllBook';
 import { Publisher } from '../../../../models/publisher';
-import { BookService } from '../../../../shared/services/book.service';
-import { CategoryService } from '../../../../shared/services/category.service';
-import { PublisherService } from '../../../../shared/services/publisher.service';
 import { ResponseModel } from '../../../../models/responseModel';
-
+import { BookService } from '../../../../core/services/book.service.service';
+import { CategoryService } from '../../../../core/services/category.service.service';
+import { PublisherService } from '../../../../core/services/publisher.service.service';
+import { Response } from '../../../../models/response';
 
 
 @Component({
@@ -47,6 +47,7 @@ bookUpdateForm!: FormGroup;
     this.editBookAddForm();
     
   }
+  
   editBookAddForm(){
     this.bookUpdateForm= this.formBuilder.group({
       id:[this.bookId],
@@ -61,7 +62,7 @@ bookUpdateForm!: FormGroup;
     })}
 
   
-  getBoook(){
+   getBoook(){
     this.bookId = this.activeRoute.snapshot.paramMap.get('id');
     this.bookService.getById(this.bookId).subscribe((response:Response<Book>)=>{
       
@@ -71,7 +72,7 @@ bookUpdateForm!: FormGroup;
   }
 
 
-  getBookById(){
+   getBookById(){
     this.bookId = this.activeRoute.snapshot.paramMap.get('id');
     
     
@@ -127,7 +128,38 @@ bookUpdateForm!: FormGroup;
       );
     }
   }
- 
+   onPageNumberChange(event:any){
+    const selectedPageNumber = event.target.value;
+     this.bookUpdateForm.patchValue({
+      page: selectedPageNumber
+     })
+   }
+
+   onIsbnChange(event:any){
+    const selectedIsbnNumber = event.target.value;
+     this.bookUpdateForm.patchValue({
+      Isbn: selectedIsbnNumber
+     })
+   }
+
+   onStockChange(event:any){
+    const selectedStock = event.target.value;
+     this.bookUpdateForm.patchValue({
+      unitsInStock: selectedStock
+     })
+   }
+   onDescriptionChange(event:any){
+    const selectedDescription = event.target.value;
+     this.bookUpdateForm.patchValue({
+      description: selectedDescription
+     })
+   }
+   onNameChange(event:any){
+    const selectedName = event.target.value;
+     this.bookUpdateForm.patchValue({
+      name: selectedName
+     })
+   }
 
 }
 

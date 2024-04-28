@@ -4,8 +4,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Publisher } from '../../../../models/publisher';
-import { PublisherService } from '../../../../shared/services/publisher.service';
 import { ResponseModel } from '../../../../models/responseModel';
+import { PublisherService } from '../../../../core/services/publisher.service.service';
 
 @Component({
   selector: 'app-edit-publisher',

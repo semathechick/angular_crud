@@ -39,7 +39,6 @@ export class LoginComponent {
      console.log(result);
      localStorage.setItem('Token', result.accessToken.token);
  
-     this.router.navigateByUrl('/homepage');
    });
  }
 }

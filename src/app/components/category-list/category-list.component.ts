@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component,  OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Category } from '../../models/Category';
-import { CategoryService } from '../../shared/services/category.service';
 import { ResponseModel } from '../../models/responseModel';
 import { RouterLink } from '@angular/router';
+import { CategoryService } from '../../core/services/category.service.service';
 
 @Component({
   selector: 'app-category-list',
@@ -24,7 +24,7 @@ export class CategoryListComponent implements OnInit {
 
   
   getCategories(){
-    this.categoryService.getAll().subscribe({
+    this.categoryService.getAllCategory().subscribe({
       next:(response:ResponseModel<Category>)=>{
         console.log('backendden cevap geldi:',response);
         this.categoryList = response.items;

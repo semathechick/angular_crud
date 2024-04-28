@@ -2,7 +2,6 @@ import { Pipe, type PipeTransform } from '@angular/core';
 import { Book } from '../../models/book';
 import { GetAllBook } from '../../models/getAllBook';
 import { Category } from '../../models/Category';
-import { CategoryService } from '../../shared/services/category.service';
 
 @Pipe({
   name: 'FilterBookListForCategory',

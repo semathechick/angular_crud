@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../../../services/category.service';
 import { Category } from '../../../../models/Category';
 import { ResponseModel } from '../../../../models/responseModel';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CategoryService } from '../../../../core/services/category.service.service';
 
 @Component({
   selector: 'app-category',
@@ -23,7 +23,7 @@ export class CategoryComponent implements OnInit{
   currentCategory!:Category;
 
   getAllCategories() {
-    this.catService.getAll().subscribe(
+    this.catService.getAllCategory().subscribe(
       (response: ResponseModel<Category>) => {
         this.categories = response.items;
       }

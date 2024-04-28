@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { Publisher } from '../../../models/publisher';
+
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PublisherService } from '../../../services/publisher.service';
+
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { PublisherService } from '../../../../core/services/publisher.service.service';
+import { Publisher } from '../../../../models/publisher';
 
 @Component({
   selector: 'app-add-publisher',

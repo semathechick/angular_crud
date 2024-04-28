@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Category } from '../../../models/Category';
-import { CategoryService } from '../../../shared/services/category.service';
+import { CategoryService } from '../../../core/services/category.service.service';
 
 @Component({
   selector: 'app-add-category',

@@ -1,18 +1,17 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-
-import { BookService } from "../../services/book.service";
-import { ResponseModel } from "../../../models/responseModel";
-import { GetAllBook } from "../../../models/getAllBook";
-import { CategoryService } from "../../services/category.service";
-import { Category } from "../../../models/Category";
-import { PublisherService } from "../../services/publisher.service";
 import { Publisher } from "../../../models/publisher";
 import { RouterLink, RouterModule } from "@angular/router";
 import { FilterlistPipe } from "../../../core/pipes/filterlist.pipe";
 import { FilterBookListForCategoryPipe } from "../../../core/pipes/FilterBookListForCategory.pipe";
 import { Book } from "../../../models/book";
+import { GetAllBook } from "../../../models/getAllBook";
+import { BookService } from "../../../core/services/book.service.service";
+import { Category } from "../../../models/Category";
+import { CategoryService } from "../../../core/services/category.service.service";
+import { PublisherService } from "../../../core/services/publisher.service.service";
+import { ResponseModel } from "../../../models/responseModel";
 
 
 
@@ -67,7 +66,7 @@ export class BookListComponent implements OnInit{
   }
 
   getCategories(){
-    this.categoryService.getAll().subscribe({
+    this.categoryService.getAllCategory().subscribe({
       next:(response:ResponseModel<Category>)=>{
         console.log('backendden cevap geldi:',response);
         this.categoryList = response.items;

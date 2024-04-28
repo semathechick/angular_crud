@@ -18,4 +18,7 @@ export class LoginService {
       authenticatorCode: authenticatorCode
     });
   }
+  checkAdminRole(email: string): Observable<boolean> {
+    return this.httpClient.get<boolean>('')
+   }
 }

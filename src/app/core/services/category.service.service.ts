@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResponseModel } from '../../models/responseModel';
 import { Category } from '../../models/Category';
-
+import { Response } from '../../models/response'
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class CategoryService {
     ('http://localhost:60805/api/Categories?PageIndex=0&PageSize=10');
   }
 
-  getById(id:number):Observable<Response<Category>>{
+   getById(id:number):Observable<Response<Category>>{
     return this.httpClient.get<Response<Category>>('http://localhost:60805/api/Categories/'+id)
   }
 

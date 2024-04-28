@@ -1,11 +1,11 @@
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, of } from 'rxjs';
 import { ResponseModel } from '../../models/responseModel';
 import { GetAllBook } from '../../models/getAllBook';
 import { Book } from '../../models/book';
-
+import { Response } from '../../models/response'
 @Injectable({
   providedIn: 'root'
 })
@@ -15,28 +15,47 @@ export class BookService {
   selectedBook$ = this.selectedBookSubject.asObservable();
 
   constructor(private httpClient:HttpClient) { }
-  apiUrl:string = "http://localhost:60805/api/Books";
+  apiUrl:string = "http://localhost:60805/api/Books/";
   
   getAll():Observable<ResponseModel<GetAllBook>>{
       return this.httpClient.get<ResponseModel<GetAllBook>>(
         this.apiUrl+'?PageIndex=0&PageSize=100'
       );
   }
-
   checkISBNInDatabase(searchKey: string): Observable<ResponseModel<any>> {
     if (searchKey) { // Eğer searchKey varsa
-      return this.httpClient.get<ResponseModel<any>>(this.apiUrl + '?PageIndex=0&PageSize=100' + searchKey);
+      // Doğru şekilde URL parametresi olarak eklemek için params objesi kullanılıyor
+      const params = { searchKey: searchKey, PageIndex: '0', PageSize: '100' };
+      return this.httpClient.get<ResponseModel<any>>(this.apiUrl, { params: params })
+        .pipe(
+          catchError((error: any) => {
+            console.error('An unexpected error occurred:', error);
+            return of({
+              items: [],
+              index: 0,
+              size: 0,
+              count: 0,
+              pages: 0,
+              hasPrevious: false,
+              hasNext: false
+            });
+          })
+        );
     } else { // Eğer searchKey yoksa
       // Boş bir Observable döndür
-      return of({items: [],
+      return of({
+        items: [],
         index: 0,
         size: 0,
         count: 0,
         pages: 0,
         hasPrevious: false,
-        hasNext: false});
+        hasNext: false
+      });
     }
   }
+
+
 
   getById(id:number):Observable<Response<Book>>{
     return this.httpClient.get<Response<Book>>('http://localhost:60805/api/Books/'+id)
